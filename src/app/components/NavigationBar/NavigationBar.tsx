@@ -1,6 +1,6 @@
 "use client"
 
-import { Icon } from "../profile/page";
+import { Icon } from "../../profile/page";
 import Image from "next/image";
 import styled from "styled-components";
 

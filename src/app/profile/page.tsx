@@ -1,4 +1,11 @@
-import NavigationBar from "./NavigationBar"
+"use client";
+
+// Importing Libraries
+import styled from "styled-components"
+
+// Importing Components
+import NavigationBar from "../components/NavigationBar/NavigationBar"
+import ProfileHeader from "../components/ProfileHeader/ProfileHeader";
 
 // import all icons for navbar
 import CompassIcon from "../../../public/icons/compass.svg"
@@ -8,7 +15,12 @@ import HouseIcon from "../../../public/icons/house.svg"
 import MagnifyingGlassIcon from "../../../public/icons/magnifyingglass.svg"
 import MessageIcon from "../../../public/icons/message.svg"
 
-// create an array of icons to pass to NavigationBar\
+const ProfileContainer = styled.div`
+    padding-left: 73px;
+    max-width: 935px;
+    margin:  30px auto;
+`;
+
 export interface Icon {
     path: string;
     altText: string;
@@ -64,9 +76,14 @@ export default function Profile(){
         <>
             {/* navigation bar */}
             <NavigationBar items={navbarConfigItems}/>
-            {/* Header  */}
-            {/* photo grid */}
-            {/* video stories */}
+            {/* profile container */}
+            <ProfileContainer>
+                {/* Header  */}
+                <ProfileHeader />
+                {/* photo grid */}
+                {/* video stories */}
+            </ProfileContainer>
+            
         </>
     )
 }
