@@ -1,0 +1,72 @@
+import NavigationBar from "./NavigationBar"
+
+// import all icons for navbar
+import CompassIcon from "../../../public/icons/compass.svg"
+import FilmIcon from "../../../public/icons/film.svg"
+import HeartIcon from "../../../public/icons/heart.svg"
+import HouseIcon from "../../../public/icons/house.svg"
+import MagnifyingGlassIcon from "../../../public/icons/magnifyingglass.svg"
+import MessageIcon from "../../../public/icons/message.svg"
+
+// create an array of icons to pass to NavigationBar\
+export interface Icon {
+    path: string;
+    altText: string;
+    width: number;
+    height: number;
+}
+
+const iconWidth: number = 25;
+const iconHeight: number = 25;
+
+
+const navbarConfigItems: Icon[] =  [
+    {
+        path: CompassIcon,
+        altText: "Discover",
+        width: iconWidth,
+        height: iconHeight
+    },
+    {
+        path: HouseIcon,
+        altText: "Home",
+        width: iconWidth,
+        height: iconHeight
+    },
+    {
+        path: MagnifyingGlassIcon,
+        altText: "Search",
+        width: iconWidth,
+        height: iconHeight
+    },
+    {
+        path: FilmIcon,
+        altText: "Reels",
+        width: iconWidth,
+        height: iconHeight
+    },
+    {
+        path: MessageIcon,
+        altText: "Message",
+        width: iconWidth,
+        height: iconHeight
+    },
+    {
+        path: HeartIcon,
+        altText: "Likes",
+        width: iconWidth,
+        height: iconHeight
+    },
+];
+
+export default function Profile(){
+    return (
+        <>
+            {/* navigation bar */}
+            <NavigationBar items={navbarConfigItems}/>
+            {/* Header  */}
+            {/* photo grid */}
+            {/* video stories */}
+        </>
+    )
+}
