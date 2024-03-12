@@ -19,6 +19,10 @@ const ProfileContainer = styled.div`
     padding-left: 73px;
     max-width: 935px;
     margin:  30px auto;
+
+    @media (max-width: 480px) {
+        padding-left: 5px;
+    }
 `;
 
 export interface Icon {
