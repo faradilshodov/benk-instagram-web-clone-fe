@@ -6,6 +6,7 @@ import styled from "styled-components"
 // Importing Components
 import NavigationBar from "../components/NavigationBar/NavigationBar"
 import ProfileHeader from "../components/ProfileHeader/ProfileHeader";
+import ProfilePhotosGrid from "../components/PhotoGrid/ProfilePhotosGrid";
 
 // import all icons for navbar
 import CompassIcon from "../../../public/icons/compass.svg"
@@ -85,6 +86,7 @@ export default function Profile(){
                 {/* Header  */}
                 <ProfileHeader />
                 {/* photo grid */}
+                <ProfilePhotosGrid />
                 {/* video stories */}
             </ProfileContainer>
             

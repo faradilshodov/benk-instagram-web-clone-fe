@@ -56,10 +56,6 @@ interface NavigationBarProps {
 }
 
 export default function NavigationBar({items}: NavigationBarProps){
-    // items.map((icon) => {
-    //     console.log(icon.altText);
-    // })
-
     return (
         <>
             <Navigation>

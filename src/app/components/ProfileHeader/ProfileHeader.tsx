@@ -8,6 +8,7 @@ const ProfileHeaderContainer = styled.div`
     // background-color: red;
     display: grid;
     grid-template-columns: 1fr 2fr;
+    margin-bottom: 44px;
 `;
 
 const ProfileImage = styled(Image)`
@@ -66,10 +67,7 @@ export default function ProfileHeader() {
 
                 const responseJSON = await response.json();
 
-                // console.log(responseJSON);
-                setBioData(responseJSON)
-                
-
+                setBioData(responseJSON);
             } catch (error: any) {
                 console.log(error);
                 
@@ -83,10 +81,7 @@ export default function ProfileHeader() {
         <>
             {bioData ? 
                 <ProfileHeaderContainer>
-                    {/* {bioData[0].bio} */}
-                    {/* image */}
                     <ProfileImage src={bioData[0].profile_image_url} width={150} height={150} alt="Profile Image" />
-                    {/* bio data */}
                     <BioText>
                         <h1>{bioData[0].name}</h1>
                         <ul>

@@ -2,7 +2,8 @@
 const nextConfig = {
     images: {
         domains: [
-            "www.doi.gov"
+            "www.doi.gov",
+            "storage.googleapis.com"
         ],
     },
 };
