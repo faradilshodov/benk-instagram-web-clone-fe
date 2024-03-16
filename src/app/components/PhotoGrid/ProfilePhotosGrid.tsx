@@ -3,8 +3,10 @@
 // Importing libraries
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
-
 import Image from "next/image";
+
+// Importing Components
+import ProfilePhotosGridModal from "./ProfilePhotosGridModal";
 
 const GridContainer = styled.div`
     display: grid;
@@ -20,7 +22,7 @@ const PhotoItem = styled.div`
 
 const apiLink = "https://jan24-jilhslxp5q-uc.a.run.app/api/posts";
 
-interface PostObject {
+export interface PostObject {
     post_id: number;
     user_id: number;
     media_url: string;
@@ -29,6 +31,8 @@ interface PostObject {
 
 export default function ProfilePhotosGrid() {
     const [posts, setPosts] = useState<PostObject[]>()
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+    const [selectedPost, setSelectedPost] = useState<PostObject | null>(null)
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -48,13 +52,31 @@ export default function ProfilePhotosGrid() {
         fetchPosts();
     }, []) 
 
+    const openModal = (post: PostObject) => {
+        setIsModalOpen(true)
+        setSelectedPost(post)
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false)
+    }
+
     return (
-        <GridContainer>
-            {posts?.map((postObject: PostObject) => (
-                <PhotoItem key={postObject.post_id}>
-                    <Image src={postObject.media_url} alt="Post Photo" fill objectFit="cover" />
-                </PhotoItem>
-            ))}
-        </GridContainer>
+        <>
+            <GridContainer>
+                {posts?.map((postObject: PostObject) => (
+                    <PhotoItem key={postObject.post_id} onClick={() => openModal(postObject)}>
+                        <Image 
+                            src={postObject.media_url} 
+                            alt="Post Photo" 
+                            fill 
+                            objectFit="cover" />
+                    </PhotoItem>
+                ))}
+            </GridContainer>
+            {isModalOpen && (
+                <ProfilePhotosGridModal closeModal={closeModal} selectedPost={selectedPost} />
+            )}
+        </>
     )
 }
