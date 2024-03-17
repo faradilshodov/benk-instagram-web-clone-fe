@@ -31,12 +31,12 @@ const ModalContent = styled.div`
     }
 
     .comments-container {
-        background-color: gray;
+        background-color: black;
         padding: 10px;
     }
 
         p {
-            color: black;
+            color: white;
         }
 `
 
