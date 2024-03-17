@@ -89,7 +89,6 @@ export default function Profile(){
                 <ProfilePhotosGrid />
                 {/* video stories */}
             </ProfileContainer>
-            
         </>
     )
 }
