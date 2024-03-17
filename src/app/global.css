@@ -50,3 +50,9 @@ table {
 p {
     color: white;
 }
+*{
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}
