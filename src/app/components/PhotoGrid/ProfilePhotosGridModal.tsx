@@ -38,6 +38,11 @@ const ModalContent = styled.div`
         p {
             color: white;
         }
+`;
+
+const PostCaption =  styled.p`
+    font-size: 20px;
+    font-weight: 700;
 `
 
 interface ProfilePhotosGridModalPropsType {
@@ -58,7 +63,12 @@ export default function ProfilePhotosGridModal({closeModal, selectedPost} : Prof
                         />
                     </div>
                     <div className="comments-container">
-                        <p>comments</p>
+                        <div>
+                            <PostCaption>{selectedPost?.caption}</PostCaption>
+                        </div>
+                        <div>
+                            <p>comments go here</p>
+                        </div>
                     </div>
                 </ModalContent>
             </ModalBackdrop>
