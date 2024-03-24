@@ -51,6 +51,8 @@ interface ProfilePhotosGridModalPropsType {
 }
 
 export default function ProfilePhotosGridModal({closeModal, selectedPost} : ProfilePhotosGridModalPropsType) {
+    // Declare a useState variable that holds array of simple comments(comment1, comment2...)
+
     return (
         <>
             <ModalBackdrop onClick={closeModal}>
@@ -68,6 +70,7 @@ export default function ProfilePhotosGridModal({closeModal, selectedPost} : Prof
                         </div>
                         <div>
                             <p>comments go here</p>
+                            {/* Map over the list of comments */}
                         </div>
                     </div>
                 </ModalContent>
