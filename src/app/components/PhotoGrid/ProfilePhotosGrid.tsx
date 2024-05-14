@@ -29,15 +29,66 @@ export interface PostObject {
     caption: string;
 }
 
+// Create a type called CommmentsObj
+export interface CommmentsObj {
+    id: number;
+    comment: string;
+}
+
+const commentsArray: CommmentsObj[] = [
+    {
+        id: 1,
+        comment: "This is so informative, thanks for sharing!"
+    },
+    {
+        id: 2,
+        comment: "Great job on this one!"
+    },
+    {
+        id: 3,
+        comment: "This didn't really make sense to me."
+    },
+    {
+        id: 4,
+        comment: "This is exactly what I needed to hear today."
+    },
+    {
+        id: 5,
+        comment: "What an interesting perspective!"
+    },
+    {
+        id: 6,
+        comment: "This didn't really make sense to me."
+    },
+    {
+        id: 7,
+        comment: "This is exactly what I needed to hear today."
+    },
+    {
+        id: 8,
+        comment: "Great job on this one!"
+    },
+    {
+        id: 9,
+        comment: "What an interesting perspective!"
+    },
+    {
+        id: 10,
+        comment: "This is exactly what I needed to hear today."
+    }
+];
+
 export default function ProfilePhotosGrid() {
     const [posts, setPosts] = useState<PostObject[]>()
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [selectedPost, setSelectedPost] = useState<PostObject | null>(null)
+    // Store dummy comments
+    const [comments, setComments] = useState<CommmentsObj[]>(commentsArray)
 
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch(apiLink);
+                const response: Response = await fetch(apiLink);
                 if (!response.ok) {
                     throw new Error("Error fetching posts")
                 }
@@ -75,7 +126,7 @@ export default function ProfilePhotosGrid() {
                 ))}
             </GridContainer>
             {isModalOpen && (
-                <ProfilePhotosGridModal closeModal={closeModal} selectedPost={selectedPost} />
+                <ProfilePhotosGridModal closeModal={closeModal} selectedPost={selectedPost} dummyComments={comments}/>
             )}
         </>
     )
