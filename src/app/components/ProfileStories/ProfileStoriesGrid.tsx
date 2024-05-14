@@ -104,6 +104,7 @@ export default function ProfileStoriesGrid() {
           closeModal={closeModal}
           stories={stories}
           currentStoryIndex={currentStoryIndex}
+          setCurrentStoryIndex={setCurrentStoryIndex}
         />
       )}
     </>
