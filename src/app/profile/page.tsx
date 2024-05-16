@@ -8,6 +8,7 @@ import NavigationBar from "../components/NavigationBar/NavigationBar";
 import ProfileHeader from "../components/ProfileHeader/ProfileHeader";
 import ProfilePhotosGrid from "../components/PhotoGrid/ProfilePhotosGrid";
 import ProfileStoriesGrid from "../components/ProfileStories/ProfileStoriesGrid";
+import UploadModal from "../components/Misc Components/UploadModal";
 
 // import all icons for navbar
 import CompassIcon from "../../../public/icons/compass.svg";
@@ -81,6 +82,10 @@ export default function Profile() {
     <>
       {/* navigation bar */}
       <NavigationBar items={navbarConfigItems} />
+
+      {/* {upload modal} */}
+      <UploadModal />
+
       {/* profile container */}
       <ProfileContainer>
         {/* Header  */}
