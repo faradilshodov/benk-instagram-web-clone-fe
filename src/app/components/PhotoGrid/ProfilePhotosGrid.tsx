@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 // Importing Components
 import ProfilePhotosGridModal from "./ProfilePhotosGridModal";
@@ -17,6 +18,24 @@ const GridContainer = styled.div`
 const PhotoItem = styled.div`
   position: relative;
   padding-bottom: 100%;
+`;
+
+const PostDeleteButton = styled.button`
+  position: absolute;
+  z-index: 5;
+  right: 5px;
+  top: 5px;
+  color: white;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  border: 1px solid gray;
+
+  &:hover {
+    background-color: rgba(255, 0, 0, 0.7);
+  }
 `;
 
 const apiLink = "https://jan24-jilhslxp5q-uc.a.run.app/api/posts";
@@ -101,6 +120,23 @@ export default function ProfilePhotosGrid() {
     fetchPosts();
   }, []);
 
+  const deletePost = async (postId: number) => {
+    try {
+      const response = await fetch(`https://jan24-jilhslxp5q-uc.a.run.app/api/posts/${postId}`, {
+        method: "DELETE"
+      })
+
+      if(!response) {
+        throw new Error("Error Deleting a Post")
+      }
+
+      setPosts((currentPosts) => currentPosts?.filter((post) => post.post_id !== postId))
+    } catch (error: any) {
+      console.log(error);
+      
+    }
+  }
+
   const openModal = (post: PostObject) => {
     setIsModalOpen(true);
     setSelectedPost(post);
@@ -110,6 +146,8 @@ export default function ProfilePhotosGrid() {
     setIsModalOpen(false);
   };
 
+  const pathname = usePathname();
+
   return (
     <>
       <GridContainer>
@@ -118,6 +156,17 @@ export default function ProfilePhotosGrid() {
             key={postObject.post_id}
             onClick={() => openModal(postObject)}
           >
+            {pathname === "/admin" && (
+              <PostDeleteButton
+                onClick={(e) => {
+                  e.stopPropagation();
+                  deletePost(postObject.post_id);
+                }}
+              >
+                X
+              </PostDeleteButton>
+            )}
+
             <Image
               src={postObject.media_url}
               alt="Post Photo"

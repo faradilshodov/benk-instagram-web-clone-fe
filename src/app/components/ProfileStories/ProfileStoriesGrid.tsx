@@ -44,7 +44,13 @@ export interface Story {
   title: string;
 }
 
-export default function ProfileStoriesGrid() {
+interface ProfileStoriesGridPropTypes {
+  triggerRender: boolean;
+}
+
+export default function ProfileStoriesGrid({
+  triggerRender,
+}: ProfileStoriesGridPropTypes) {
   const [stories, setStories] = useState<Story[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>();
   const [currentStoryIndex, setCurrentStoryIndex] = useState<number>();
@@ -70,7 +76,7 @@ export default function ProfileStoriesGrid() {
     };
 
     fetchStories();
-  }, []);
+  }, [triggerRender]);
 
   const openModal = (story: Story) => {
     setIsModalOpen(true);

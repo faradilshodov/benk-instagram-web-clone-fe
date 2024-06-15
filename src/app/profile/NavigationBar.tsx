@@ -3,11 +3,12 @@
 import { Icon } from "../profile/page";
 import Image from "next/image";
 import styled from "styled-components";
+import { usePathname } from "next/navigation";
 
 const Navigation = styled.aside`
   /* background-color: black; */
   display: grid;
-  grid-template-rows: repeat(6, min-content);
+  grid-template-rows: repeat(7, min-content);
   grid-gap: 10px;
   width: fit-content;
   position: fixed;
@@ -35,7 +36,7 @@ const Navigation = styled.aside`
     /* background-color: red; */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: grid;
-    grid-template-columns: repeat(6, min-content);
+    grid-template-columns: repeat(7, min-content);
     grid-template-rows: 1fr;
     height: fit-content;
     bottom: 0px;
@@ -57,16 +58,23 @@ interface NavigationBarProps {
 }
 
 export default function NavigationBar({ items }: NavigationBarProps) {
-  // items.map((icon) => {
-  //     console.log(icon.altText);
-  // })
+  const pathname = usePathname();
 
   return (
     <>
       <Navigation>
         {items.map((icon, index) => {
+          const isAddButton = icon.altText === "Add";
+
+          if (pathname != "/admin" && isAddButton) {
+            return null;
+          }
+
           return (
-            <button key={index}>
+            <button
+              key={index}
+              onClick={icon.onClick ? icon.onClick : () => {}}
+            >
               <Image
                 src={icon.path}
                 width={icon.width}
